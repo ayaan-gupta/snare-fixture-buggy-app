@@ -1,0 +1,14 @@
+{
+  "name": "snare-fixture-buggy-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deliberately buggy fixture app used to test Snare's automated bug-fixing pipeline. Do not fix the bug directly on this repo by hand — it exists on purpose.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

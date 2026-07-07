@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>snare-fixture-buggy-app</title>
+</head>
+<body>
+<h1>Sum demo</h1>
+<p>Numbers: <span id="nums">1,2,3,4</span></p>
+<p>Result: <span id="result">loading...</span></p>
+<script>
+fetch("/sum?nums=1,2,3,4")
+  .then((r) => r.json())
+  .then((data) => {
+    document.getElementById("result").textContent = data.sum;
+  });
+</script>
+</body>
+</html>
