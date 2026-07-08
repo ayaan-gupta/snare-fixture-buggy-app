@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const { sum } = require("./lib/sum");
 const { average } = require("./lib/average");
+const { double } = require("./lib/double");
 
 const app = express();
 
@@ -21,6 +22,14 @@ app.get("/average", (req, res) => {
     .filter(Boolean)
     .map(Number);
   res.json({ average: average(nums) });
+});
+
+app.get("/double", (req, res) => {
+  const nums = String(req.query.nums || "")
+    .split(",")
+    .filter(Boolean)
+    .map(Number);
+  res.json({ doubled: double(nums) });
 });
 
 if (require.main === module) {
