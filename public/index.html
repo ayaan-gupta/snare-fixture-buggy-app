@@ -8,11 +8,19 @@
 <h1>Sum demo</h1>
 <p>Numbers: <span id="nums">1,2,3,4</span></p>
 <p>Result: <span id="result">loading...</span></p>
+<h1>Average demo</h1>
+<p>Numbers: <span id="nums2">2,4,6</span></p>
+<p>Result: <span id="avgResult">loading...</span></p>
 <script>
 fetch("/sum?nums=1,2,3,4")
   .then((r) => r.json())
   .then((data) => {
     document.getElementById("result").textContent = data.sum;
+  });
+fetch("/average?nums=2,4,6")
+  .then((r) => r.json())
+  .then((data) => {
+    document.getElementById("avgResult").textContent = data.average;
   });
 </script>
 </body>
