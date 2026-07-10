@@ -1,8 +1,11 @@
 const express = require("express");
 const path = require("path");
+const { init } = require("@getsnare/sdk");
 const { sum } = require("./lib/sum");
 const { average } = require("./lib/average");
 const { double } = require("./lib/double");
+
+init({ projectId: "k8jin03w72hjakjhn029h0lz" });
 
 const app = express();
 
