@@ -4,6 +4,18 @@ const { sum } = require("./lib/sum");
 const { average } = require("./lib/average");
 const { double } = require("./lib/double");
 
+// Snare telemetry SDK init. NOTE: `npm install @snare/sdk` returned a real
+// 404 from the public npm registry at the time this was added (@snare/sdk
+// is not currently published there) — this call is wrapped defensively so
+// the app still boots; it will start reporting once the package is
+// installable.
+try {
+  const { init } = require("@snare/sdk");
+  init({ projectId: "k8jin03w72hjakjhn029h0lz" });
+} catch (err) {
+  console.warn("[snare] @snare/sdk not installed yet:", err.message);
+}
+
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
