@@ -3,6 +3,8 @@ const path = require("path");
 const { sum } = require("./lib/sum");
 const { average } = require("./lib/average");
 const { double } = require("./lib/double");
+const { max } = require("./lib/max");
+const { track } = require("./lib/analytics");
 
 const app = express();
 
@@ -13,7 +15,9 @@ app.get("/sum", (req, res) => {
     .split(",")
     .filter(Boolean)
     .map(Number);
-  res.json({ sum: sum(nums) });
+  const result = sum(nums);
+  track("sum_computed", { count: nums.length });
+  res.json({ sum: result });
 });
 
 app.get("/average", (req, res) => {
@@ -30,6 +34,14 @@ app.get("/double", (req, res) => {
     .filter(Boolean)
     .map(Number);
   res.json({ doubled: double(nums) });
+});
+
+app.get("/max", (req, res) => {
+  const nums = String(req.query.nums || "")
+    .split(",")
+    .filter(Boolean)
+    .map(Number);
+  res.json({ max: max(nums) });
 });
 
 if (require.main === module) {
